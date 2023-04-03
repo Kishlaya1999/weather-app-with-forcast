@@ -7,3 +7,46 @@
      display: flex;
      flex-direction: column;
 }
+
+.weather__current {
+     height: 70%;
+     display: flex;
+     align-items: center;
+     padding: 20px;
+     flex-direction: column;
+}
+
+.weather__city_name {
+     font-size: 2.5rem;
+     font-weight: 900;
+}
+
+.weather_icon {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     font-size: 1.3rem;
+}
+
+.weather_icon img {
+     width: 150px;
+}
+
+.weather__celcius_no,
+.weather__fahrenheit_no {
+     font-size: 2rem;
+     font-weight: 900;
+}
+
+.weather__other_info {
+     display: flex;
+     justify-content: center;
+}
+
+.weather__other_info_celcius,
+.weather__other_info_fahrenheit {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 2px;
+}

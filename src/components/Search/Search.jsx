@@ -50,7 +50,7 @@ const Search = () => {
 	const setLongituedeAndLatitude = (lat, lon) => {
 		setLatitude(lat.toFixed(2));
 		setLongitude(lon.toFixed(2));
-		// setSearchedData([]);
+		setSearchedData([]);
 		// inputBar.current.value = "";
 	};
 
