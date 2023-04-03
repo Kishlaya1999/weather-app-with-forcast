@@ -1,0 +1,9 @@
+.weather {
+     width: 50vw;
+     height: 80vh;
+     background-color: #000000b0;
+     color: white;
+     min-width: 500px;
+     display: flex;
+     flex-direction: column;
+}
