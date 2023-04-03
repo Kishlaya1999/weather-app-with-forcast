@@ -18,6 +18,16 @@ const ShowSearchedWeather = ({ latitude, longitude }) => {
 		// console.log(forcast, 1);
 	}, [latitude, longitude]);
 
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			fetchForcast();
+		}, 20);
+		// console.log(forcast, 1);
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [isCelsius]);
+
 	const fetchForcast = () => {
 		fetch(
 			`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=${isCelsius}`
@@ -50,15 +60,31 @@ const ShowSearchedWeather = ({ latitude, longitude }) => {
 						<span>{forcast?.list[0]?.weather[0]?.main}</span>
 					</div>
 					<div className="weather__temp_info">
-						<div className="weather__celcius">
-							<span className="weather__celcius_no">
-								{Math.ceil(forcast?.list[0]?.main?.temp)}°C
-							</span>
-							|<span>°F</span>
-						</div>
-						{/* <div className="weather__fahrenheit">
-						<span className="weather__fahrenheit_no">25°F</span>|<span>°C</span>
-					</div> */}
+						{isCelsius === "metric" ? (
+							<div className="weather__celcius">
+								<span className="weather__celcius_no">
+									{Math.ceil(forcast?.list[0]?.main?.temp)}°C&nbsp;
+								</span>
+								|&nbsp;
+								<span
+									onClick={() => setIsCelcius("imperial")}
+									className="weather__other_unit">
+									°F
+								</span>
+							</div>
+						) : (
+							<div className="weather__fahrenheit">
+								<span className="weather__fahrenheit_no">
+									{Math.ceil(forcast?.list[0]?.main?.temp)}°F&nbsp;
+								</span>
+								|&nbsp;
+								<span
+									onClick={() => setIsCelcius("metric")}
+									className="weather__other_unit">
+									°C
+								</span>
+							</div>
+						)}
 					</div>
 					<div className="weather__other_info">
 						<div className="weather__other_info_celcius">

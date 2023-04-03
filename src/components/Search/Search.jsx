@@ -48,8 +48,8 @@ const Search = () => {
 	console.log(searchedData);
 
 	const setLongituedeAndLatitude = (lat, lon) => {
-		setLatitude(lat.toFixed(2));
-		setLongitude(lon.toFixed(2));
+		setLatitude(lat);
+		setLongitude(lon);
 		setSearchedData([]);
 		// inputBar.current.value = "";
 	};
