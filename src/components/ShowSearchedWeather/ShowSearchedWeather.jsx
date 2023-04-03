@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import "./ShowSearchedWeather.css";
 import { API_KEY } from "../../utils/constants";
+import Forcast from "../Forcast/Forcast";
 
 const ShowSearchedWeather = ({ latitude, longitude }) => {
 	const [isCelsius, setIsCelcius] = useState("metric");
@@ -147,9 +148,9 @@ const ShowSearchedWeather = ({ latitude, longitude }) => {
 					</div>
 				</div>
 			)}
-
-			<h1>{latitude}</h1>
-			<h1>{longitude}</h1>
+			{!(Object.keys(forcast).length === 0) && forcast?.list && (
+				<Forcast isCelsius={isCelsius} list={forcast?.list.slice(1, 5)} />
+			)}
 		</div>
 	);
 };
