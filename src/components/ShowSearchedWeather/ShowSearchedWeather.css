@@ -50,13 +50,19 @@
 
 .weather__other_info {
      display: flex;
-     justify-content: center;
+     justify-content: space-between;
+     width: 100%;
 }
 
 .weather__other_info_celcius,
 .weather__other_info_fahrenheit {
      display: flex;
      flex-direction: column;
-     align-items: center;
+     /* align-items: center; */
      gap: 2px;
+}
+
+.weather_sunrise_sunset {
+     display: flex;
+     flex-direction: column;
 }

@@ -46,6 +46,11 @@ const ShowSearchedWeather = ({ latitude, longitude }) => {
 
 	// }
 
+	const formatTime = (time, timezone) => {
+		const date = new Date((time + timezone) * 1000);
+		return `${date.toUTCString().slice(17, 25)}`;
+	};
+
 	return (
 		<div className="weather">
 			{!(Object.keys(forcast).length === 0) && forcast?.list && (
@@ -87,25 +92,58 @@ const ShowSearchedWeather = ({ latitude, longitude }) => {
 						)}
 					</div>
 					<div className="weather__other_info">
-						<div className="weather__other_info_celcius">
-							<div className="weather__feels_like">
-								Feels Like: {Math.ceil(forcast?.list[0]?.main?.feels_like)}
-								°C
+						{isCelsius === "metric" ? (
+							<div className="weather__other_info_celcius">
+								<div className="weather__feels_like">
+									Feels Like:{" "}
+									{Math.ceil(forcast?.list[0]?.main?.feels_like)}
+									°C
+								</div>
+								<div className="weather__temp_max">
+									<i className="fa-solid fa-temperature-arrow-up"></i>{" "}
+									Max. Temprature:{" "}
+									{Math.ceil(forcast?.list[0]?.main?.temp_max)}°C
+								</div>
+								<div className="weather__feels_min">
+									<i className="fa-solid fa-temperature-arrow-down"></i>{" "}
+									Min. Temprature:{" "}
+									{Math.ceil(forcast?.list[0]?.main?.temp_min)}°C
+								</div>
 							</div>
-							<div className="weather__temp_max">
-								<i className="fa-solid fa-temperature-arrow-up"></i> Max.
-								Temprature: {Math.ceil(forcast?.list[0]?.main?.temp_max)}°C
+						) : (
+							<div className="weather__other_info_celcius">
+								<div className="weather__feels_like">
+									Feels Like:{" "}
+									{Math.ceil(forcast?.list[0]?.main?.feels_like)}
+									°F
+								</div>
+								<div className="weather__temp_max">
+									<i className="fa-solid fa-temperature-arrow-up"></i>{" "}
+									Max. Temprature:{" "}
+									{Math.ceil(forcast?.list[0]?.main?.temp_max)}°F
+								</div>
+								<div className="weather__feels_min">
+									<i className="fa-solid fa-temperature-arrow-down"></i>{" "}
+									Min. Temprature:{" "}
+									{Math.ceil(forcast?.list[0]?.main?.temp_min)}°F
+								</div>
 							</div>
-							<div className="weather__feels_min">
-								<i className="fa-solid fa-temperature-arrow-down"></i> Min.
-								Temprature: {Math.ceil(forcast?.list[0]?.main?.temp_min)}°C
-							</div>
+						)}
+						<div className="weather_sunrise_sunset">
+							<span className="weather_sunrise">
+								<i className="fa-regular fa-sun"></i> Sunrise:{" "}
+								{formatTime(
+									forcast?.city?.sunrise,
+									forcast?.city?.timezone
+								)}{" "}
+								AM
+							</span>
+							<span className="weather_sunset">
+								<i className="fa-solid fa-moon"></i> Sunset:{" "}
+								{formatTime(forcast?.city?.sunset, forcast?.city?.timezone)}{" "}
+								PM
+							</span>
 						</div>
-						{/* <div className="weather__other_info_fahrenheit">
-					<div className="weather__feels_like">16°C</div>
-					<div className="weather__temp_max">17°C</div>
-					<div className="weather__feels_min">14°C</div>
-				</div> */}
 					</div>
 				</div>
 			)}
