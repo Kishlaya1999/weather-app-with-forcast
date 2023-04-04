@@ -28,12 +28,12 @@ const Forcast = ({ isCelsius, list }) => {
 						{isCelsius === "metric" ? (
 							<div className="forcast__min_max_temp">
 								<div className="forcast__min_temp">
-									Min. Temp:{" "}
+									Min. {" "}
 									{Math.ceil(singleDayForcast?.main?.temp_min)}
 									°C
 								</div>
 								<div className="forcast__max_temp">
-									Max. Temp:{" "}
+									Max. {" "}
 									{Math.ceil(singleDayForcast?.main?.temp_max)}
 									°C
 								</div>
@@ -41,12 +41,12 @@ const Forcast = ({ isCelsius, list }) => {
 						) : (
 							<div className="forcast__min_max_temp">
 								<div className="forcast__min_temp">
-									Min. Temp:{" "}
+									Min. {" "}
 									{Math.ceil(singleDayForcast?.main?.temp_min)}
 									°F
 								</div>
 								<div className="forcast__max_temp">
-									Max. Temp:{" "}
+									Max. {" "}
 									{Math.ceil(singleDayForcast?.main?.temp_max)}
 									°F
 								</div>
