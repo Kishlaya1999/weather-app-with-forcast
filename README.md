@@ -23,6 +23,6 @@ npm run dev
 
 ## Screen Recording of the Project
 
-https://user-images.githubusercontent.com/66960784/229989013-db755941-b9e6-4ef4-bc34-73277093ec63.mp4
+https://user-images.githubusercontent.com/66960784/229991961-75cc0c20-92c1-487c-bddd-098fe0bda5da.mp4
 
 <h3 align="center">Thank You 🙏 hope you liked the project </h1>
